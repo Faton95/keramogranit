@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sL \"https://keramogranituz.com/wp-content/uploads/2024/04/basalt-cream-430x430.jpg\" -o \"basalt.jpg\")",
+      "Bash(curl -sL \"https://keramogranituz.com/wp-content/uploads/2024/04/interery-dlya-reklamy-prime-ceramic-uzbekistan__vannaya_1_f1-2-430x430.jpg\" -o \"callacata.jpg\")",
+      "Bash(curl -sL \"https://keramogranituz.com/wp-content/uploads/2024/04/interery_dlya_reklamy_prime_seramic_gostinaya_f_2-430x430.jpg\" -o \"carrara.jpg\")",
+      "Bash(curl -sL \"https://keramogranituz.com/wp-content/uploads/2023/10/concreto-430x430.webp\" -o \"concreto.webp\")",
+      "Bash(curl -sL \"https://keramogranituz.com/wp-content/uploads/2023/10/desert-430x430.webp\" -o \"desert.webp\")",
+      "Bash(curl -sL \"https://keramogranituz.com/wp-content/uploads/2023/10/dust-430x430.webp\" -o \"dust.webp\")",
+      "Bash(curl -sL \"https://keramogranituz.com/wp-content/uploads/2023/10/gloria-430x430.webp\" -o \"gloria.webp\")"
+    ]
+  }
+}
