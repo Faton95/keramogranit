@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const FreeDeliveryIcon = () => (
   <svg
@@ -34,24 +35,23 @@ const FastDeliveryIcon = () => (
   </svg>
 );
 
-const deliveryFeatures = [
-  {
-    icon: <FreeDeliveryIcon />,
-    title: "Free Delivery",
-    description:
-      "Free delivery of products purchased on the website within Tashkent",
-  },
-  {
-    icon: <FastDeliveryIcon />,
-    title: "Fast Delivery",
-    description:
-      "Delivery within 24 hours or at the time specified by the customer",
-  },
-];
-
 export default function PaymentDelivery() {
+  const { t } = useLanguage();
   const imageRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+
+  const deliveryFeatures = [
+    {
+      icon: <FreeDeliveryIcon />,
+      titleKey: "delivery.free.title",
+      descKey: "delivery.free.desc",
+    },
+    {
+      icon: <FastDeliveryIcon />,
+      titleKey: "delivery.fast.title",
+      descKey: "delivery.fast.desc",
+    },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -79,7 +79,7 @@ export default function PaymentDelivery() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-8">
-              Payment and Delivery
+              {t("delivery.title")}
             </h2>
             <div className="space-y-6">
               {deliveryFeatures.map((feature, index) => (
@@ -92,9 +92,9 @@ export default function PaymentDelivery() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                      {feature.title}
+                      {t(feature.titleKey)}
                     </h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <p className="text-gray-600">{t(feature.descKey)}</p>
                   </div>
                 </div>
               ))}

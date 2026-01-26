@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 const FacebookIcon = () => (
   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -12,16 +14,17 @@ const InstagramIcon = () => (
   </svg>
 );
 
-const navLinks = [
-  { label: "Main", href: "#main" },
-  { label: "About us", href: "#about" },
-  { label: "Collections", href: "#collections" },
-  { label: "Payment and delivery", href: "#payment-delivery" },
-  { label: "Contacts", href: "#contacts" },
-];
-
 export default function Footer() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
+
+  const navLinks = [
+    { labelKey: "nav.main", href: "#main" },
+    { labelKey: "nav.about", href: "#about" },
+    { labelKey: "nav.collections", href: "#collections" },
+    { labelKey: "nav.payment", href: "#payment-delivery" },
+    { labelKey: "nav.contacts", href: "#contacts" },
+  ];
 
   return (
     <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white">
@@ -37,9 +40,7 @@ export default function Footer() {
               <h3 className="text-2xl font-bold">Keramogranit</h3>
             </div>
             <p className="text-gray-400 leading-relaxed max-w-md">
-              Duniesi Porcelain Tiles is the official, exclusive partner of
-              Prime Ceramics JV LLC, specializing in high-quality porcelain
-              tiles in Tashkent and the Tashkent region.
+              {t("footer.description")}
             </p>
           </div>
 
@@ -47,7 +48,7 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
               <span className="w-8 h-0.5 bg-amber-600 rounded-full" />
-              Quick Links
+              {t("footer.quickLinks")}
             </h3>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
               {navLinks.map((link) => (
@@ -64,7 +65,7 @@ export default function Footer() {
                     className="text-gray-400 hover:text-amber-500 transition-colors duration-200 text-sm flex items-center gap-2 group cursor-pointer"
                   >
                     <span className="w-1.5 h-1.5 bg-gray-600 rounded-full group-hover:bg-amber-500 transition-colors duration-200" />
-                    {link.label}
+                    {t(link.labelKey)}
                   </a>
                 </li>
               ))}
@@ -75,7 +76,7 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
               <span className="w-8 h-0.5 bg-amber-600 rounded-full" />
-              Follow Us
+              {t("footer.followUs")}
             </h3>
             <div className="flex items-center gap-3">
               <a
@@ -105,7 +106,7 @@ export default function Footer() {
       <div className="border-t border-gray-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <p className="text-gray-500 text-sm text-center">
-            &copy; {currentYear} Prime Ceramics. All rights reserved.
+            &copy; {currentYear} {t("footer.copyright")}
           </p>
         </div>
       </div>

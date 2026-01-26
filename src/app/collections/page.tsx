@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { data } from "@/constants/data";
+import { useLanguage } from "@/context/LanguageContext";
 
 const categories = [
   "All",
@@ -32,6 +33,7 @@ interface CollectionItem {
 }
 
 const CollectionsPage = () => {
+  const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedItem, setSelectedItem] = useState<CollectionItem | null>(null);
   const [activeImage, setActiveImage] = useState<string>("");
@@ -105,7 +107,7 @@ const CollectionsPage = () => {
                     d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                   />
                 </svg>
-                Home
+                {t("collections.home")}
               </Link>
             </li>
             <li>
@@ -125,7 +127,7 @@ const CollectionsPage = () => {
             </li>
             <li>
               <span className="text-gray-900 dark:text-white font-medium">
-                Collections
+                {t("nav.collections")}
               </span>
             </li>
           </ol>
@@ -133,10 +135,10 @@ const CollectionsPage = () => {
 
         <header className="text-center mb-12 animate-fade-in">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
-            Our Collections
+            {t("collections.title")}
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Discover our premium selection of porcelain tiles and surfaces
+            {t("collections.subtitle")}
           </p>
         </header>
 
@@ -152,13 +154,12 @@ const CollectionsPage = () => {
                     : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white shadow-md"
                 }`}
               >
-                {category}
+                {category === "All" ? t("collections.all") : category}
               </button>
             ))}
           </div>
           <p className="text-center mt-4 text-sm text-gray-500 dark:text-gray-400">
-            Showing {filteredData.length} collection
-            {filteredData.length !== 1 ? "s" : ""}
+            {t("collections.showing")} {filteredData.length} {filteredData.length !== 1 ? t("collections.collections") : t("collections.collection")}
           </p>
         </div>
 
@@ -188,7 +189,7 @@ const CollectionsPage = () => {
                   {item.title}
                 </h3>
                 <div className="flex items-center text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                  <span>{item.images.child.length} variations</span>
+                  <span>{item.images.child.length} {t("collections.variations")}</span>
                   <svg
                     className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
                     fill="none"
@@ -233,7 +234,7 @@ const CollectionsPage = () => {
         {filteredData.length === 0 && (
           <div className="text-center py-16">
             <p className="text-gray-500 dark:text-gray-400 text-lg">
-              No collections found for &quot;{activeFilter}&quot;
+              {t("collections.noResults")} &quot;{activeFilter}&quot;
             </p>
           </div>
         )}
@@ -305,7 +306,7 @@ const CollectionsPage = () => {
                       d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
                     />
                   </svg>
-                  2x Zoom
+                  {t("collections.zoom")}
                 </div>
               )}
             </div>
@@ -315,11 +316,11 @@ const CollectionsPage = () => {
                 {selectedItem.title}
               </h2>
               <p className="text-gray-500 dark:text-gray-400 text-xs mb-4">
-                {selectedItem.images.child.length + 1} images available
+                {selectedItem.images.child.length + 1} {t("collections.imagesAvailable")}
               </p>
 
               <h3 className="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-3">
-                Variations
+                {t("collections.variationsLabel")}
               </h3>
 
               <div className="grid grid-cols-4 md:grid-cols-3 gap-2">

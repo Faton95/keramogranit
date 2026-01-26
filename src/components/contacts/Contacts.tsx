@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const PhoneIcon = () => (
   <svg
@@ -66,6 +67,7 @@ interface FormData {
 }
 
 export default function ContactsPage() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
@@ -96,13 +98,13 @@ export default function ContactsPage() {
       <section className="bg-gray-50 min-h-screen py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 text-center mb-12">
-            Contacts
+            {t("contacts.title")}
           </h1>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div className="bg-white rounded-xl shadow-lg p-8">
               <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-                Get in Touch
+                {t("contacts.getInTouch")}
               </h2>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
@@ -110,7 +112,7 @@ export default function ContactsPage() {
                     htmlFor="fullName"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Full Name
+                    {t("contacts.fullName")}
                   </label>
                   <input
                     type="text"
@@ -120,7 +122,7 @@ export default function ContactsPage() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors text-gray-900 placeholder:text-gray-400 bg-white"
-                    placeholder="Enter your full name"
+                    placeholder={t("contacts.fullName.placeholder")}
                   />
                 </div>
                 <div>
@@ -128,7 +130,7 @@ export default function ContactsPage() {
                     htmlFor="email"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Email
+                    {t("contacts.email")}
                   </label>
                   <input
                     type="email"
@@ -138,7 +140,7 @@ export default function ContactsPage() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors text-gray-900 placeholder:text-gray-400 bg-white"
-                    placeholder="Enter your email"
+                    placeholder={t("contacts.email.placeholder")}
                   />
                 </div>
                 <div>
@@ -146,7 +148,7 @@ export default function ContactsPage() {
                     htmlFor="phoneNumber"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Phone Number
+                    {t("contacts.phone")}
                   </label>
                   <input
                     type="tel"
@@ -156,7 +158,7 @@ export default function ContactsPage() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors text-gray-900 placeholder:text-gray-400 bg-white"
-                    placeholder="Enter your phone number"
+                    placeholder={t("contacts.phone.placeholder")}
                   />
                 </div>
                 <div>
@@ -164,7 +166,7 @@ export default function ContactsPage() {
                     htmlFor="city"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    City
+                    {t("contacts.city")}
                   </label>
                   <input
                     type="text"
@@ -174,7 +176,7 @@ export default function ContactsPage() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors text-gray-900 placeholder:text-gray-400 bg-white"
-                    placeholder="Enter your city"
+                    placeholder={t("contacts.city.placeholder")}
                   />
                 </div>
                 <div>
@@ -182,7 +184,7 @@ export default function ContactsPage() {
                     htmlFor="message"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Message
+                    {t("contacts.message")}
                   </label>
                   <textarea
                     id="message"
@@ -192,7 +194,7 @@ export default function ContactsPage() {
                     required
                     rows={4}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors resize-none text-gray-900 placeholder:text-gray-400 bg-white"
-                    placeholder="Enter your message"
+                    placeholder={t("contacts.message.placeholder")}
                   />
                 </div>
                 <div className="flex items-center gap-3">
@@ -209,14 +211,14 @@ export default function ContactsPage() {
                     htmlFor="agreeToProcessing"
                     className="text-sm text-gray-600 cursor-pointer"
                   >
-                    I agree to the processing of personal data.
+                    {t("contacts.agree")}
                   </label>
                 </div>
                 <button
                   type="submit"
                   className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
                 >
-                  Send
+                  {t("contacts.send")}
                 </button>
               </form>
             </div>
@@ -225,7 +227,7 @@ export default function ContactsPage() {
             <div className="flex flex-col gap-8">
               <div className="bg-white rounded-xl shadow-lg p-8">
                 <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-                  Contacts
+                  {t("contacts.title")}
                 </h2>
                 <div className="space-y-5">
                   <div className="flex items-start gap-4">
@@ -233,7 +235,7 @@ export default function ContactsPage() {
                       <PhoneIcon />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 mb-1">Phone</p>
+                      <p className="text-sm text-gray-500 mb-1">{t("contacts.phoneLabel")}</p>
                       <a
                         href="tel:+998977217007"
                         className="text-gray-800 font-medium hover:text-amber-600 transition-colors"
@@ -247,10 +249,9 @@ export default function ContactsPage() {
                       <LocationIcon />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 mb-1">Address</p>
+                      <p className="text-sm text-gray-500 mb-1">{t("contacts.addressLabel")}</p>
                       <p className="text-gray-800 font-medium">
-                        2 Parkent Street, Passage 7, 100007, Tashkent,
-                        Uzbekistan
+                        {t("contacts.address")}
                       </p>
                     </div>
                   </div>
@@ -259,7 +260,7 @@ export default function ContactsPage() {
                       <EmailIcon />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 mb-1">Email</p>
+                      <p className="text-sm text-gray-500 mb-1">{t("contacts.emailLabel")}</p>
                       <a
                         href="mailto:saleinfo@prime-ceramics.com"
                         className="text-gray-800 font-medium hover:text-amber-600 transition-colors"

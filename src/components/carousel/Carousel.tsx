@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface CarouselItem {
   id: number;
@@ -87,6 +88,7 @@ const ITEMS_PER_PAGE = 5;
 const AUTO_SWIPE_INTERVAL = 5000;
 
 export default function Carousel() {
+  const { t } = useLanguage();
   const [currentPage, setCurrentPage] = useState(0);
   const totalPages = Math.ceil(carouselItems.length / ITEMS_PER_PAGE);
 
@@ -102,23 +104,16 @@ export default function Carousel() {
     return () => clearInterval(interval);
   }, [totalPages]);
 
-  const getCurrentItems = () => {
-    const startIndex = currentPage * ITEMS_PER_PAGE;
-    return carouselItems.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-  };
-
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-            Unique Prime Ceramics Collections
+            {t("carousel.title")}
           </h2>
           <div className="w-[100px] h-1 bg-amber-600 mx-auto mb-6" />
           <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
-            Simplicity, vivid tactile sensations, exclusive finishes, and
-            attention to detail are the hallmarks of this extensive collection
-            of ceramic tiles for residential and commercial spaces.
+            {t("carousel.description")}
           </p>
         </div>
 
@@ -171,7 +166,7 @@ export default function Carousel() {
                   ? "bg-amber-600 w-8"
                   : "bg-gray-300 hover:bg-gray-400"
               }`}
-              aria-label={`Go to page ${index + 1}`}
+              aria-label={`${t("carousel.goToPage")} ${index + 1}`}
             />
           ))}
         </div>
@@ -181,7 +176,7 @@ export default function Carousel() {
             href="/collections"
             className="group relative inline-flex items-center gap-2 bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold overflow-hidden transition-all duration-300 hover:bg-amber-700 hover:shadow-lg hover:shadow-amber-600/30 hover:-translate-y-1"
           >
-            <span className="relative z-10">View All Collections</span>
+            <span className="relative z-10">{t("carousel.viewAll")}</span>
             <svg
               className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-1"
               fill="none"

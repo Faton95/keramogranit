@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ReactNode, useState, useEffect } from "react";
+import { useLanguage, Language } from "@/context/LanguageContext";
 
 const HomeIcon = () => (
   <svg
@@ -84,21 +85,21 @@ const ContactsIcon = () => (
 );
 
 interface NavItem {
-  label: string;
+  labelKey: string;
   href: string;
   icon: ReactNode;
 }
 
-const navItems: NavItem[] = [
-  { label: "Main", href: "#main", icon: <HomeIcon /> },
-  { label: "About us", href: "#about", icon: <AboutIcon /> },
-  { label: "Collections", href: "#collections", icon: <CollectionsIcon /> },
+const navItemsConfig: NavItem[] = [
+  { labelKey: "nav.main", href: "#main", icon: <HomeIcon /> },
+  { labelKey: "nav.about", href: "#about", icon: <AboutIcon /> },
+  { labelKey: "nav.collections", href: "#collections", icon: <CollectionsIcon /> },
   {
-    label: "Payment and delivery",
+    labelKey: "nav.payment",
     href: "#payment-delivery",
     icon: <DeliveryIcon />,
   },
-  { label: "Contacts", href: "#contacts", icon: <ContactsIcon /> },
+  { labelKey: "nav.contacts", href: "#contacts", icon: <ContactsIcon /> },
 ];
 
 const EnglishFlag = () => (
@@ -132,29 +133,31 @@ const LithuanianFlag = () => (
   </svg>
 );
 
-interface Language {
-  code: string;
-  label: string;
+interface LanguageOption {
+  code: Language;
+  labelKey: string;
   flag: ReactNode;
 }
 
-const languages: Language[] = [
-  { code: "en", label: "English", flag: <EnglishFlag /> },
-  { code: "lt", label: "Lithuanian", flag: <LithuanianFlag /> },
+const languageOptions: LanguageOption[] = [
+  { code: "en", labelKey: "lang.english", flag: <EnglishFlag /> },
+  { code: "lt", labelKey: "lang.lithuanian", flag: <LithuanianFlag /> },
 ];
 
 export default function Navbar() {
-  const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
+  const { language, setLanguage, t } = useLanguage();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("#main");
 
+  const selectedLanguageOption = languageOptions.find((l) => l.code === language) || languageOptions[0];
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = navItems.map((item) => item.href.substring(1));
+      const sections = navItemsConfig.map((item) => item.href.substring(1));
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
         if (element) {
@@ -225,7 +228,7 @@ export default function Navbar() {
 
             <div className="hidden lg:block">
               <ul className="flex items-center space-x-1">
-                {navItems.map((item) => (
+                {navItemsConfig.map((item) => (
                   <li key={item.href}>
                     <button
                       onClick={() => handleNavClick(item.href)}
@@ -242,7 +245,7 @@ export default function Navbar() {
                       >
                         {item.icon}
                       </span>
-                      <span>{item.label}</span>
+                      <span>{t(item.labelKey)}</span>
                       {activeSection === item.href && (
                         <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-amber-600 rounded-full" />
                       )}
@@ -263,10 +266,10 @@ export default function Navbar() {
                   }`}
                 >
                   <span className="transform transition-transform duration-300 hover:scale-110">
-                    {selectedLanguage.flag}
+                    {selectedLanguageOption.flag}
                   </span>
                   <span className="hidden sm:inline text-sm font-medium">
-                    {selectedLanguage.code.toUpperCase()}
+                    {selectedLanguageOption.code.toUpperCase()}
                   </span>
                   <svg
                     className={`w-4 h-4 transition-transform duration-300 ${
@@ -292,24 +295,24 @@ export default function Navbar() {
                       : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                   }`}
                 >
-                  {languages.map((language) => (
+                  {languageOptions.map((langOption) => (
                     <button
-                      key={language.code}
+                      key={langOption.code}
                       onClick={() => {
-                        setSelectedLanguage(language);
+                        setLanguage(langOption.code);
                         setIsDropdownOpen(false);
                       }}
                       className={`flex items-center gap-3 w-full px-4 py-3 text-left transition-all duration-200 ${
-                        selectedLanguage.code === language.code
+                        language === langOption.code
                           ? "bg-amber-50 text-amber-700"
                           : "text-gray-700 hover:bg-gray-50"
                       }`}
                     >
                       <span className="transform transition-transform duration-200 hover:scale-110">
-                        {language.flag}
+                        {langOption.flag}
                       </span>
-                      <span className="font-medium">{language.label}</span>
-                      {selectedLanguage.code === language.code && (
+                      <span className="font-medium">{t(langOption.labelKey)}</span>
+                      {language === langOption.code && (
                         <svg
                           className="w-4 h-4 ml-auto text-amber-600"
                           fill="currentColor"
@@ -374,7 +377,7 @@ export default function Navbar() {
           <div className="flex flex-col h-full pt-20 pb-6">
             <div className="flex-1 px-4 py-6 overflow-y-auto">
               <ul className="space-y-2">
-                {navItems.map((item, index) => (
+                {navItemsConfig.map((item, index) => (
                   <li
                     key={item.href}
                     style={{
@@ -405,7 +408,7 @@ export default function Navbar() {
                       >
                         {item.icon}
                       </span>
-                      <span className="font-medium">{item.label}</span>
+                      <span className="font-medium">{t(item.labelKey)}</span>
                       {activeSection === item.href && (
                         <svg
                           className="w-5 h-5 ml-auto text-amber-600"
@@ -427,7 +430,7 @@ export default function Navbar() {
 
             <div className="px-4 pt-4 border-t border-gray-100">
               <p className="text-xs text-gray-400 text-center">
-                Premium Porcelain Tiles
+                {t("nav.premium")}
               </p>
             </div>
           </div>
