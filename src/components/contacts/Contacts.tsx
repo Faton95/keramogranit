@@ -76,6 +76,7 @@ export default function ContactsPage() {
     message: "",
     agreeToProcessing: false,
   });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -88,9 +89,37 @@ export default function ContactsPage() {
     }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setStatus("sending");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          phoneNumber: formData.phoneNumber,
+          city: formData.city,
+          message: formData.message,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed to send");
+
+      setStatus("success");
+      setFormData({
+        fullName: "",
+        email: "",
+        phoneNumber: "",
+        city: "",
+        message: "",
+        agreeToProcessing: false,
+      });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -214,11 +243,18 @@ export default function ContactsPage() {
                     {t("contacts.agree")}
                   </label>
                 </div>
+                {status === "success" && (
+                  <p className="text-green-600 text-sm font-medium">{t("contacts.success")}</p>
+                )}
+                {status === "error" && (
+                  <p className="text-red-600 text-sm font-medium">{t("contacts.error")}</p>
+                )}
                 <button
                   type="submit"
-                  className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+                  disabled={status === "sending"}
+                  className="w-full bg-amber-600 hover:bg-amber-700 disabled:bg-amber-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
                 >
-                  {t("contacts.send")}
+                  {status === "sending" ? t("contacts.sending") : t("contacts.send")}
                 </button>
               </form>
             </div>
@@ -237,10 +273,10 @@ export default function ContactsPage() {
                     <div>
                       <p className="text-sm text-gray-500 mb-1">{t("contacts.phoneLabel")}</p>
                       <a
-                        href="tel:+998977217007"
+                        href="tel:+37068026411"
                         className="text-gray-800 font-medium hover:text-amber-600 transition-colors"
                       >
-                        +998 97 721 7007
+                        +370 680 26411
                       </a>
                     </div>
                   </div>

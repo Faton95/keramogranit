@@ -7,7 +7,8 @@
       "Bash(curl -sL \"https://keramogranituz.com/wp-content/uploads/2023/10/concreto-430x430.webp\" -o \"concreto.webp\")",
       "Bash(curl -sL \"https://keramogranituz.com/wp-content/uploads/2023/10/desert-430x430.webp\" -o \"desert.webp\")",
       "Bash(curl -sL \"https://keramogranituz.com/wp-content/uploads/2023/10/dust-430x430.webp\" -o \"dust.webp\")",
-      "Bash(curl -sL \"https://keramogranituz.com/wp-content/uploads/2023/10/gloria-430x430.webp\" -o \"gloria.webp\")"
+      "Bash(curl -sL \"https://keramogranituz.com/wp-content/uploads/2023/10/gloria-430x430.webp\" -o \"gloria.webp\")",
+      "Bash(npm install:*)"
     ]
   }
 }

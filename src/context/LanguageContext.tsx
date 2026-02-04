@@ -25,7 +25,7 @@ const translations: Record<Language, Record<string, string>> = {
     "lang.lithuanian": "Lithuanian",
 
     // Banner
-    "banner.title": "Duniesi Porcelain Tile manufacturer of collectible ceramic tiles and porcelain tiles in Tashkent and the Tashkent region.",
+    "banner.title": "Duniesi Porcelain Tile manufacturer of collectible ceramic tiles and porcelain tiles in Vilnius and the Vilnius region.",
     "banner.feature1": "Over 50 exquisite collections",
     "banner.feature2": "European design",
     "banner.feature3": "Manufacturer prices",
@@ -35,7 +35,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // About Company
     "about.title": "About our company",
-    "about.description": "Duniesi Porcelain Tiles is the official, exclusive partner of Prime Ceramics JV LLC, a manufacturer specializing in the production and distribution of high-quality porcelain tiles in Tashkent and the Tashkent region.",
+    "about.description": "Duniesi Porcelain Tiles is the official, exclusive partner of Prime Ceramics JV LLC, a manufacturer specializing in the production and distribution of high-quality porcelain tiles in Vilnius and the Vilnius region.",
     "about.feature1.title": "Italian Equipment",
     "about.feature1.desc": "Our tiles are manufactured using modern Italian equipment and high-quality raw materials, ensuring they fully comply with all construction standards and environmental requirements.",
     "about.feature2.title": "Variety",
@@ -43,7 +43,7 @@ const translations: Record<Language, Record<string, string>> = {
     "about.feature3.title": "Premium Quality",
     "about.feature3.desc": "All our wall tiles and floor coverings are manufactured under strict quality control, guaranteeing competitiveness and high quality.",
     "about.feature4.title": "Convenient Logistics",
-    "about.feature4.desc": "Free delivery within Tashkent on orders over 10 square meters.",
+    "about.feature4.desc": "Free delivery within Vilnius on orders over 10 square meters.",
     "about.stat1.value": "4,380,000 m²",
     "about.stat1.desc": "of ceramic tiles produced annually",
     "about.stat2.value": "2 formats",
@@ -64,7 +64,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Payment & Delivery
     "delivery.title": "Payment and Delivery",
     "delivery.free.title": "Free Delivery",
-    "delivery.free.desc": "Free delivery of products purchased on the website within Tashkent",
+    "delivery.free.desc": "Free delivery of products purchased on the website within Vilnius",
     "delivery.fast.title": "Fast Delivery",
     "delivery.fast.desc": "Delivery within 24 hours or at the time specified by the customer",
 
@@ -83,13 +83,16 @@ const translations: Record<Language, Record<string, string>> = {
     "contacts.message.placeholder": "Enter your message",
     "contacts.agree": "I agree to the processing of personal data.",
     "contacts.send": "Send",
+    "contacts.sending": "Sending...",
+    "contacts.success": "Message sent successfully!",
+    "contacts.error": "Failed to send message. Please try again.",
     "contacts.phoneLabel": "Phone",
     "contacts.addressLabel": "Address",
     "contacts.emailLabel": "Email",
-    "contacts.address": "2 Parkent Street, Passage 7, 100007, Tashkent, Uzbekistan",
+    "contacts.address": "Gedimino pr. 20, LT-01103, Vilnius, Lithuania",
 
     // Footer
-    "footer.description": "Duniesi Porcelain Tiles is the official, exclusive partner of Prime Ceramics JV LLC, specializing in high-quality porcelain tiles in Tashkent and the Tashkent region.",
+    "footer.description": "Duniesi Porcelain Tiles is the official, exclusive partner of Prime Ceramics JV LLC, specializing in high-quality porcelain tiles in Vilnius and the Vilnius region.",
     "footer.quickLinks": "Quick Links",
     "footer.followUs": "Follow Us",
     "footer.copyright": "Prime Ceramics. All rights reserved.",
@@ -120,7 +123,7 @@ const translations: Record<Language, Record<string, string>> = {
     "lang.lithuanian": "Lietuviu",
 
     // Banner
-    "banner.title": "Duniesi Porceliano plyteles - kolekciniu keraminiu ir porceliano plyteliu gamintojas Taškente ir Taškento regione.",
+    "banner.title": "Duniesi Porceliano plyteles - kolekciniu keraminiu ir porceliano plyteliu gamintojas Vilniuje ir Vilniaus regione.",
     "banner.feature1": "Daugiau nei 50 išskirtiniu kolekciju",
     "banner.feature2": "Europietiškas dizainas",
     "banner.feature3": "Gamintojo kainos",
@@ -130,7 +133,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // About Company
     "about.title": "Apie musu imone",
-    "about.description": "Duniesi Porceliano plyteles yra oficialus, išskirtinis Prime Ceramics JV LLC partneris, gamintojas, specializuojantis aukštos kokybes porceliano plyteliu gamyboje ir platinime Taškente ir Taškento regione.",
+    "about.description": "Duniesi Porceliano plyteles yra oficialus, išskirtinis Prime Ceramics JV LLC partneris, gamintojas, specializuojantis aukštos kokybes porceliano plyteliu gamyboje ir platinime Vilniuje ir Vilniaus regione.",
     "about.feature1.title": "Itališka iranga",
     "about.feature1.desc": "Musu plyteles gaminamos naudojant moderna itališka iranga ir aukštos kokybes žaliavas, užtikrinant visišką atitikti visiems statybos standartams ir aplinkosaugos reikalavimams.",
     "about.feature2.title": "Ivairove",
@@ -138,7 +141,7 @@ const translations: Record<Language, Record<string, string>> = {
     "about.feature3.title": "Aukšciausia kokybe",
     "about.feature3.desc": "Visos musu sienines plyteles ir grindines dangos gaminamos griežtai kontroliuojant kokybe, garantuojant konkurencinguma ir aukšta kokybe.",
     "about.feature4.title": "Patogi logistika",
-    "about.feature4.desc": "Nemokamas pristatymas Taškente užsakymams nuo 10 kvadratiniu metru.",
+    "about.feature4.desc": "Nemokamas pristatymas Vilniuje užsakymams nuo 10 kvadratiniu metru.",
     "about.stat1.value": "4 380 000 m²",
     "about.stat1.desc": "keraminiu plyteliu pagaminama kasmet",
     "about.stat2.value": "2 formatai",
@@ -159,7 +162,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Payment & Delivery
     "delivery.title": "Mokejimas ir pristatymas",
     "delivery.free.title": "Nemokamas pristatymas",
-    "delivery.free.desc": "Nemokamas svetaineje isigytu produktu pristatymas Taškento mieste",
+    "delivery.free.desc": "Nemokamas svetaineje isigytu produktu pristatymas Vilniaus mieste",
     "delivery.fast.title": "Greitas pristatymas",
     "delivery.fast.desc": "Pristatymas per 24 valandas arba kliento nurodytu laiku",
 
@@ -178,13 +181,16 @@ const translations: Record<Language, Record<string, string>> = {
     "contacts.message.placeholder": "Iveskite savo žinute",
     "contacts.agree": "Sutinku su asmens duomenu tvarkymu.",
     "contacts.send": "Siusti",
+    "contacts.sending": "Siunčiama...",
+    "contacts.success": "Žinute sėkmingai išsiųsta!",
+    "contacts.error": "Nepavyko išsiųsti žinutes. Bandykite dar karta.",
     "contacts.phoneLabel": "Telefonas",
     "contacts.addressLabel": "Adresas",
     "contacts.emailLabel": "El. paštas",
-    "contacts.address": "Parkent gatve 2, Praejimas 7, 100007, Taškentas, Uzbekistanas",
+    "contacts.address": "Gedimino pr. 20, LT-01103, Vilnius, Lietuva",
 
     // Footer
-    "footer.description": "Duniesi Porceliano plyteles yra oficialus, išskirtinis Prime Ceramics JV LLC partneris, specializuojantis aukštos kokybes porceliano plytelem Taškente ir Taškento regione.",
+    "footer.description": "Duniesi Porceliano plyteles yra oficialus, išskirtinis Prime Ceramics JV LLC partneris, specializuojantis aukštos kokybes porceliano plytelem Vilniuje ir Vilniaus regione.",
     "footer.quickLinks": "Greitos nuorodos",
     "footer.followUs": "Sekite mus",
     "footer.copyright": "Prime Ceramics. Visos teises saugomos.",
